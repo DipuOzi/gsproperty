@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme {
+  /* GS Property Group — proposed palette */
+  --color-navy: #172b3a;
+  --color-navy-deep: #101f2b;
+  --color-navy-soft: #223c4f;
+  --color-charcoal: #202a30;
+  --color-cream: #f7f5f0;
+  --color-parchment: #efeae1;
+  --color-stone-warm: #e8e5df;
+  --color-stone-line: #d9d4c9;
+  --color-gold: #b69a68;
+  --color-gold-deep: #9c7f4f;
+  --color-gold-pale: #d9c8a3;
+  --color-ink-soft: #45525b;
+  --color-error: #a63d2f;
+
+  /* Exact brand font: Lettersiro Logotype Sans is commercial. The family is
+     declared first so it activates automatically once the licensed webfont file
+     is available on the device (or the webfont kit is added later). */
+  --font-display: "Lettersiro Logotype Sans", "Manrope", "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-sans: "Lettersiro Logotype Sans", "Manrope", "Helvetica Neue", Arial, system-ui, sans-serif;
+
+  --shadow-panel: 0 24px 60px -24px rgba(23, 43, 58, 0.28);
+  --shadow-lift: 0 18px 40px -18px rgba(23, 43, 58, 0.35);
+
+  --animate-hero-drift: hero-drift 9s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  --animate-fade-in: fade-in 0.55s ease both;
+  --animate-form-swap: form-swap 0.45s cubic-bezier(0.22, 0.61, 0.36, 1) both;
+
+  @keyframes hero-drift {
+    from {
+      transform: scale(1.09);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes form-swap {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-charcoal font-sans antialiased;
+  font-feature-settings: "kern" 1, "liga" 1;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+  letter-spacing: -0.02em;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: #b69a68;
+  color: #172b3a;
+}
+
+/* Anchored sections clear the sticky header */
+section[id],
+div[id="top"] {
+  scroll-margin-top: 5.25rem;
+}
+
+/* Visible, consistent keyboard focus */
+:focus-visible {
+  outline: 2px solid #b69a68;
+  outline-offset: 3px;
+  border-radius: 1px;
+}
+
+/* Elegant small-caps eyebrow label */
+.eyebrow {
+  @apply text-[0.65rem] font-semibold uppercase tracking-[0.24em];
+}
+
+.font-display {
+  letter-spacing: -0.02em;
+}
+
+/* Image treatment — gentle unification with the palette */
+.img-graded {
+  filter: saturate(0.8) contrast(1.05) brightness(0.99);
+}
+
+/* FAQ accordion — smooth height via grid rows */
+.faq-answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.45s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+.faq-answer[data-open="true"] {
+  grid-template-rows: 1fr;
+}
+.faq-answer > div {
+  overflow: hidden;
+}
+
+/* Subtle paper grain for dark sections */
+.grain::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.55'/%3E%3C/svg%3E");
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

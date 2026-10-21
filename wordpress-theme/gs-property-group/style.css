@@ -1,0 +1,12 @@
+/*
+Theme Name: GS Property Group
+Theme URI: https://gspropertygroup.co.uk/
+Author: GS Property Group
+Description: Static one-page design theme for the GS Property Group homepage. The finished layout is supplied as an exact, WordPress-ready build for review and handoff.
+Version: 1.0.0
+Requires at least: 6.0
+Requires PHP: 7.4
+Text Domain: gs-property-group
+*/
+
+/* Front-end styles are loaded from assets/site.css by functions.php. */
